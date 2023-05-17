@@ -2,10 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 var possibleCharacters = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","+"];
 
-/*var upperCaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var upperCaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var lowerCaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var numberList = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-var specialCharacterList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]*/
+var specialCharsList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
 
 // Begin function to obtain users' input.
 function getUserInput() {
@@ -41,15 +41,22 @@ function generatePassword() {
   var password = "";
   var selectedCharacters = [];
 
-if (userInput.containsSpecialCharacters){
-    selectedCharacters = selectedCharacters.concat(specialChars);
+if (userInput.containsSpecialCharacters) {
+    selectedCharacters = selectedCharacters.concat(specialCharsList);
 }
-if (userInput.)
-
+if (userInput.containsNumbers) {
+  selectedCharacters = selectedCharacters.concat(numberList);
+}
+if (userInput.containsUpperCase) {
+  selectedCharacters = selectedCharacters.concat(upperCaseList);
+}
+if (userInput.containsLowerCase) {
+  selectedCharacters = selectedCharacters.concat(lowerCaseList);
+}
 
 for (var i = 0; i < passwordLength; i++) {
-  var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
-  password += possibleCharacters.charAt(randomIndex);
+  var randomIndex = Math.floor(Math.random() * selectedCharacters.length);
+  password += selectedCharacters.charAt(randomIndex);
 }
 return password;
 
