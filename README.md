@@ -2,17 +2,17 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Are you still using that old MySpace password from years ago for all of your new accounts? If so, head on over to this password generator application to create new and secure passwords! This webpage develops a random password with the length and types of characters of the users' choice. Through this application, users can make their accounts more secure with new unique passwords. As I developed this project, I learned new skills in JavaScript and gained more experience with GitHub.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Link to deployed website: https://kristengould.github.io/JavaScript-Password-Generator/
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+![image of deployed application](src/images/website_img.png)
 
-![alt text](assets/images/screenshot.png)
+Begin use of the application by pressing the "Generate Password" button. You will be presented with a series of prompts to determine the length of your password and what types of characters will be included. At the end of the promts, your new password will be presented in the textbox!
+
+
+
+

@@ -1,6 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var possibleCharacters = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","+"];
+var passwordLength;
+var containsSpecialCharacters;
+var containsNumbers;
+var containsUpperCase;
+var containsLowerCase;
 
 var upperCaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var lowerCaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -16,12 +21,10 @@ var passwordLength = prompt(
 // Alert if user enters number outside of 8 - 128 range.
 if (passwordLength < 8 || passwordLength > 128) {
   alert ("Please try again, password length must be between 8 - 128 characters in length.");
-  return "Please try again!";
 };
 // Alert if user enters non-number value.
 if (isNaN(passwordLength) === true) {
   alert ("Please pick a number!")
-  return "Please try again!";
 };
 // Continue with prompts once user enters valid number.
 var containsSpecialCharacters = confirm("Do you want special characters in your password?");
@@ -41,17 +44,17 @@ function generatePassword() {
   var password = "";
   var selectedCharacters = [];
 
-if (userInput.containsSpecialCharacters) {
-    selectedCharacters = selectedCharacters.concat(specialCharsList);
+if (userInput.containsSpecialCharacters === true) {
+    selectedCharacters = selectedCharacters.push(specialCharsList);
 }
-if (userInput.containsNumbers) {
-  selectedCharacters = selectedCharacters.concat(numberList);
+if (userInput.containsNumbers === true) {
+  selectedCharacters = selectedCharacters.push(numberList);
 }
-if (userInput.containsUpperCase) {
-  selectedCharacters = selectedCharacters.concat(upperCaseList);
+if (userInput.containsUpperCase === true) {
+  selectedCharacters = selectedCharacters.push(upperCaseList);
 }
-if (userInput.containsLowerCase) {
-  selectedCharacters = selectedCharacters.concat(lowerCaseList);
+if (userInput.containsLowerCase === true) {
+  selectedCharacters = selectedCharacters.push(lowerCaseList);
 }
 
 for (var i = 0; i < passwordLength; i++) {
@@ -119,7 +122,6 @@ function writePassword() {
 
   passwordText.value = password;
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
