@@ -27,86 +27,48 @@ function getUserInput() {
   var containsLowerCase = confirm("Do you want lowercase letters in your password?");
   //If all four prompts return false:
   if (!containsSpecialCharacters && !containsNumbers && !containsUpperCase && !containsLowerCase) {
-   alert ("Please choose a criteria!")
-  return "Please choose at lease one criteria!";
+   alert ("Please choose a criteria!");
+  writePassword();
   }
+
+var userSelections = {
+  length: passwordLength,
+  specialChars: containsSpecialCharacters,
+  upperCase: containsUpperCase,
+  lowerCase: containsLowerCase,
+  numbers: containsNumbers,
+}
+
+console.log(userSelections)
+return userSelections;
 }
 
 // Begin generate password function.
 function generatePassword() {
   var userInput = getUserInput();
+  console.log(userInput);
   var password = "";
   var selectedCharacters = [];
 
-  if (userInput.containsSpecialCharacters === true) {
-    selectedCharacters = selectedCharacters.push(specialCharsList);
+  if (userInput.specialChars) {
+    selectedCharacters = selectedCharacters.concat(specialCharsList);
   }
-  if (userInput.containsNumbers === true) {
-    selectedCharacters = selectedCharacters.push(numberList);
+  if (userInput.upperCase) {
+    selectedCharacters = selectedCharacters.concat(upperCaseList);
   }
-  if (userInput.containsUpperCase === true) {
-    selectedCharacters = selectedCharacters.push(upperCaseList);
+  if (userInput.lowerCase) {
+    selectedCharacters = selectedCharacters.concat(lowerCaseList);
   }
-  if (userInput.containsLowerCase === true) {
-   selectedCharacters = selectedCharacters.push(lowerCaseList);
+  if (userInput.numbers) {
+   selectedCharacters = selectedCharacters.concat(numberList);
   }
 
-  for (var i = 0; i < passwordLength; i++) {
+  for (var i = 0; i < userInput.length; i++) {
    var randomIndex = Math.floor(Math.random() * selectedCharacters.length);
-   password += selectedCharacters.charAt(randomIndex);
+   var randomCharacter = selectedCharacters[randomIndex];
+   password = password + randomCharacter;
   }
-  return password;
-
-/* If all four prompts return true:
-  if (containsSpecialCharacters && containsNumbers && containsUpperCase && containsLowerCase) {
-    possibleCharacters = specialCharacterList.concat(upperCaseList, lowerCaseList, numberList);
-  }
-// If three prompts return true:
-  if (containsSpecialCharacters && containsNumbers && containsUpperCase) {
-    possibleCharacters = specialCharacterList.concat(numberList, upperCaseList);
-  }
-  if (containsSpecialCharacters && containsNumbers && containsLowerCase) {
-    possibleCharacters = specialCharacterList.concat(numberList, lowerCaseList);
-  }
-  if (containsSpecialCharacters && containsUpperCase && containsLowerCase) {
-    possibleCharacters = specialCharacterList.concat(upperCaseList, lowerCaseList);
-  }
-  if (containsUpperCase && containsLowerCase && containsNumbers) {
-    possibleCharacters = upperCaseList.concat(lowerCaseList, numberList);
-  }
-// If two prompts return true:
-  if (containsSpecialCharacters && containsNumbers) {
-    possibleCharacters = specialCharacterList.concat(numberList);
-  }
-  if (containsSpecialCharacters && containsUpperCase) {
-    possibleCharacters = specialCharacterList.concat(upperCaseList);
-  }
-  if (containsSpecialCharacters && containsLowerCase) {
-    possibleCharacters = specialCharacterList.concat(lowerCaseList);
-  }
-  if (containsNumbers && containsUpperCase) {
-    possibleCharacters = numberList.concat(upperCaseList);
-  }
-  if (containsNumbers && containsLowerCase) {
-    possibleCharacters = numberList.concat(lowerCaseList);
-  }
-  if (containsUpperCase && containsLowerCase) {
-    possibleCharacters = upperCaseList.concat(lowerCaseList);
-  }
-// If one prompt returns true:
-  if (containsSpecialCharacters) {
-    possibleCharacters = specialCharacterList;
-  }
-  if (containsUpperCase) {
-    possibleCharacters = upperCaseList;
-  }
-  if (containsLowerCase) {
-    possibleCharacters = lowerCaseList;
-  }
-  if (containsNumbers) {
-    possibleCharacters = numberList;
-  }*/
-
+  return password; 
 }
 
 // Write password to the #password input
