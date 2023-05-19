@@ -1,12 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var possibleCharacters = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","+"];
-var passwordLength;
-var containsSpecialCharacters;
-var containsNumbers;
-var containsUpperCase;
-var containsLowerCase;
-
 var upperCaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var lowerCaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var numberList = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1]
@@ -14,28 +7,29 @@ var specialCharsList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
 
 // Begin function to obtain users' input.
 function getUserInput() {
-// Prompts users to enter a number for length of password.
-var passwordLength = prompt(
+  
+  // Prompts users to enter a number for length of password.
+  var passwordLength = prompt(
   "How many characters would you like your password to be? (Must be 8 - 128 characters in length.)"
-);
-// Alert if user enters number outside of 8 - 128 range.
-if (passwordLength < 8 || passwordLength > 128) {
-  alert ("Please try again, password length must be between 8 - 128 characters in length.");
-};
-// Alert if user enters non-number value.
-if (isNaN(passwordLength) === true) {
-  alert ("Please pick a number!")
-};
-// Continue with prompts once user enters valid number.
-var containsSpecialCharacters = confirm("Do you want special characters in your password?");
-var containsNumbers = confirm("Do you want numbers in your password?");
-var containsUpperCase = confirm("Do you want uppercase letters in your password?");
-var containsLowerCase = confirm("Do you want lowercase letters in your password?");
-//If all four prompts return false:
-if (!containsSpecialCharacters && !containsNumbers && !containsUpperCase && !containsLowerCase) {
-  alert ("Please choose a criteria!")
+  );
+  // Alert if user enters number outside of 8 - 128 range.
+  if (passwordLength < 8 || passwordLength > 128) {
+   alert ("Please try again, password length must be between 8 - 128 characters in length.");
+  };
+  // Alert if user enters non-number value.
+  if (isNaN(passwordLength) === true) {
+    alert ("Please pick a number!")
+  };
+  // Continue with prompts once user enters valid number.
+  var containsSpecialCharacters = confirm("Do you want special characters in your password?");
+  var containsNumbers = confirm("Do you want numbers in your password?");
+  var containsUpperCase = confirm("Do you want uppercase letters in your password?");
+  var containsLowerCase = confirm("Do you want lowercase letters in your password?");
+  //If all four prompts return false:
+  if (!containsSpecialCharacters && !containsNumbers && !containsUpperCase && !containsLowerCase) {
+   alert ("Please choose a criteria!")
   return "Please choose at lease one criteria!";
-}
+  }
 }
 
 // Begin generate password function.
@@ -44,24 +38,24 @@ function generatePassword() {
   var password = "";
   var selectedCharacters = [];
 
-if (userInput.containsSpecialCharacters === true) {
+  if (userInput.containsSpecialCharacters === true) {
     selectedCharacters = selectedCharacters.push(specialCharsList);
-}
-if (userInput.containsNumbers === true) {
-  selectedCharacters = selectedCharacters.push(numberList);
-}
-if (userInput.containsUpperCase === true) {
-  selectedCharacters = selectedCharacters.push(upperCaseList);
-}
-if (userInput.containsLowerCase === true) {
-  selectedCharacters = selectedCharacters.push(lowerCaseList);
-}
+  }
+  if (userInput.containsNumbers === true) {
+    selectedCharacters = selectedCharacters.push(numberList);
+  }
+  if (userInput.containsUpperCase === true) {
+    selectedCharacters = selectedCharacters.push(upperCaseList);
+  }
+  if (userInput.containsLowerCase === true) {
+   selectedCharacters = selectedCharacters.push(lowerCaseList);
+  }
 
-for (var i = 0; i < passwordLength; i++) {
-  var randomIndex = Math.floor(Math.random() * selectedCharacters.length);
-  password += selectedCharacters.charAt(randomIndex);
-}
-return password;
+  for (var i = 0; i < passwordLength; i++) {
+   var randomIndex = Math.floor(Math.random() * selectedCharacters.length);
+   password += selectedCharacters.charAt(randomIndex);
+  }
+  return password;
 
 /* If all four prompts return true:
   if (containsSpecialCharacters && containsNumbers && containsUpperCase && containsLowerCase) {
