@@ -9,7 +9,7 @@ Are you still using that old MySpace password from years ago for all of your new
 
 Link to deployed website: https://kristengould.github.io/JavaScript-Password-Generator/
 
-![image of deployed application](src/images/website_img.png)
+![image of deployed application](website_img.png)
 
 Begin use of the application by pressing the "Generate Password" button. You will be presented with a series of prompts to determine the length of your password and what types of characters will be included. At the end of the prompts, your new password will be presented in the textbox!
 
